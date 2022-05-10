@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Source>C:\Users\alonl\Desktop\Store App\.png</Source>
+    <SmallTileSource>C:\Users\alonl\Desktop\Store App\.png</SmallTileSource>
+    <MediumTileSource>C:\Users\alonl\Desktop\Store App\.png</MediumTileSource>
+    <WideTileSource>C:\Users\alonl\Desktop\Store App\.png</WideTileSource>
+    <LargeTileSource>C:\Users\alonl\Desktop\Store App\.png</LargeTileSource>
+    <AppIconSource>C:\Users\alonl\Desktop\Store App\.png</AppIconSource>
+    <SplashScreenSource>C:\Users\alonl\Desktop\Store App\.png</SplashScreenSource>
+    <PackageLogoSource>C:\Users\alonl\Desktop\Store App\.png</PackageLogoSource>
+  </PropertyGroup>
+</Project>

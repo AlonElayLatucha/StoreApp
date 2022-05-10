@@ -1,0 +1,232 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="Service1" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import namespace="http://tempuri.org/" />
+      <xsd:import namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import namespace="http://schemas.datacontract.org/2004/07/System" />
+      <xsd:import namespace="http://schemas.datacontract.org/2004/07/System.Reflection" />
+      <xsd:import namespace="http://schemas.datacontract.org/2004/07/WcfServiceLibrary1.Model" />
+      <xsd:import />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="StoreInterface_AddToTable_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddToTable" />
+  </wsdl:message>
+  <wsdl:message name="StoreInterface_AddToTable_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddToTableResponse" />
+  </wsdl:message>
+  <wsdl:message name="StoreInterface_SendSQLQuery_InputMessage">
+    <wsdl:part name="parameters" element="tns:SendSQLQuery" />
+  </wsdl:message>
+  <wsdl:message name="StoreInterface_SendSQLQuery_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SendSQLQueryResponse" />
+  </wsdl:message>
+  <wsdl:message name="StoreInterface_RemoveAllFromTable_InputMessage">
+    <wsdl:part name="parameters" element="tns:RemoveAllFromTable" />
+  </wsdl:message>
+  <wsdl:message name="StoreInterface_RemoveAllFromTable_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RemoveAllFromTableResponse" />
+  </wsdl:message>
+  <wsdl:message name="StoreInterface_AddItem_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddItem" />
+  </wsdl:message>
+  <wsdl:message name="StoreInterface_AddItem_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddItemResponse" />
+  </wsdl:message>
+  <wsdl:message name="StoreInterface_AddCustomer_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddCustomer" />
+  </wsdl:message>
+  <wsdl:message name="StoreInterface_AddCustomer_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddCustomerResponse" />
+  </wsdl:message>
+  <wsdl:message name="StoreInterface_AddSale_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddSale" />
+  </wsdl:message>
+  <wsdl:message name="StoreInterface_AddSale_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddSaleResponse" />
+  </wsdl:message>
+  <wsdl:message name="StoreInterface_SelectAllItems_InputMessage">
+    <wsdl:part name="parameters" element="tns:SelectAllItems" />
+  </wsdl:message>
+  <wsdl:message name="StoreInterface_SelectAllItems_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SelectAllItemsResponse" />
+  </wsdl:message>
+  <wsdl:message name="StoreInterface_SelectAllCustomers_InputMessage">
+    <wsdl:part name="parameters" element="tns:SelectAllCustomers" />
+  </wsdl:message>
+  <wsdl:message name="StoreInterface_SelectAllCustomers_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SelectAllCustomersResponse" />
+  </wsdl:message>
+  <wsdl:message name="StoreInterface_SelectAllSales_InputMessage">
+    <wsdl:part name="parameters" element="tns:SelectAllSales" />
+  </wsdl:message>
+  <wsdl:message name="StoreInterface_SelectAllSales_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SelectAllSalesResponse" />
+  </wsdl:message>
+  <wsdl:message name="StoreInterface_SelectAllSalesByID_InputMessage">
+    <wsdl:part name="parameters" element="tns:SelectAllSalesByID" />
+  </wsdl:message>
+  <wsdl:message name="StoreInterface_SelectAllSalesByID_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SelectAllSalesByIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="StoreInterface_SelectSales_InputMessage">
+    <wsdl:part name="parameters" element="tns:SelectSales" />
+  </wsdl:message>
+  <wsdl:message name="StoreInterface_SelectSales_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SelectSalesResponse" />
+  </wsdl:message>
+  <wsdl:portType name="StoreInterface">
+    <wsdl:operation name="AddToTable">
+      <wsdl:input wsaw:Action="http://tempuri.org/StoreInterface/AddToTable" message="tns:StoreInterface_AddToTable_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/StoreInterface/AddToTableResponse" message="tns:StoreInterface_AddToTable_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SendSQLQuery">
+      <wsdl:input wsaw:Action="http://tempuri.org/StoreInterface/SendSQLQuery" message="tns:StoreInterface_SendSQLQuery_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/StoreInterface/SendSQLQueryResponse" message="tns:StoreInterface_SendSQLQuery_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RemoveAllFromTable">
+      <wsdl:input wsaw:Action="http://tempuri.org/StoreInterface/RemoveAllFromTable" message="tns:StoreInterface_RemoveAllFromTable_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/StoreInterface/RemoveAllFromTableResponse" message="tns:StoreInterface_RemoveAllFromTable_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddItem">
+      <wsdl:input wsaw:Action="http://tempuri.org/StoreInterface/AddItem" message="tns:StoreInterface_AddItem_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/StoreInterface/AddItemResponse" message="tns:StoreInterface_AddItem_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddCustomer">
+      <wsdl:input wsaw:Action="http://tempuri.org/StoreInterface/AddCustomer" message="tns:StoreInterface_AddCustomer_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/StoreInterface/AddCustomerResponse" message="tns:StoreInterface_AddCustomer_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddSale">
+      <wsdl:input wsaw:Action="http://tempuri.org/StoreInterface/AddSale" message="tns:StoreInterface_AddSale_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/StoreInterface/AddSaleResponse" message="tns:StoreInterface_AddSale_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SelectAllItems">
+      <wsdl:input wsaw:Action="http://tempuri.org/StoreInterface/SelectAllItems" message="tns:StoreInterface_SelectAllItems_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/StoreInterface/SelectAllItemsResponse" message="tns:StoreInterface_SelectAllItems_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SelectAllCustomers">
+      <wsdl:input wsaw:Action="http://tempuri.org/StoreInterface/SelectAllCustomers" message="tns:StoreInterface_SelectAllCustomers_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/StoreInterface/SelectAllCustomersResponse" message="tns:StoreInterface_SelectAllCustomers_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SelectAllSales">
+      <wsdl:input wsaw:Action="http://tempuri.org/StoreInterface/SelectAllSales" message="tns:StoreInterface_SelectAllSales_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/StoreInterface/SelectAllSalesResponse" message="tns:StoreInterface_SelectAllSales_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SelectAllSalesByID">
+      <wsdl:input wsaw:Action="http://tempuri.org/StoreInterface/SelectAllSalesByID" message="tns:StoreInterface_SelectAllSalesByID_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/StoreInterface/SelectAllSalesByIDResponse" message="tns:StoreInterface_SelectAllSalesByID_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SelectSales">
+      <wsdl:input wsaw:Action="http://tempuri.org/StoreInterface/SelectSales" message="tns:StoreInterface_SelectSales_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/StoreInterface/SelectSalesResponse" message="tns:StoreInterface_SelectSales_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_StoreInterface" type="tns:StoreInterface">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="AddToTable">
+      <soap:operation soapAction="http://tempuri.org/StoreInterface/AddToTable" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendSQLQuery">
+      <soap:operation soapAction="http://tempuri.org/StoreInterface/SendSQLQuery" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RemoveAllFromTable">
+      <soap:operation soapAction="http://tempuri.org/StoreInterface/RemoveAllFromTable" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddItem">
+      <soap:operation soapAction="http://tempuri.org/StoreInterface/AddItem" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddCustomer">
+      <soap:operation soapAction="http://tempuri.org/StoreInterface/AddCustomer" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddSale">
+      <soap:operation soapAction="http://tempuri.org/StoreInterface/AddSale" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SelectAllItems">
+      <soap:operation soapAction="http://tempuri.org/StoreInterface/SelectAllItems" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SelectAllCustomers">
+      <soap:operation soapAction="http://tempuri.org/StoreInterface/SelectAllCustomers" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SelectAllSales">
+      <soap:operation soapAction="http://tempuri.org/StoreInterface/SelectAllSales" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SelectAllSalesByID">
+      <soap:operation soapAction="http://tempuri.org/StoreInterface/SelectAllSalesByID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SelectSales">
+      <soap:operation soapAction="http://tempuri.org/StoreInterface/SelectSales" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Service1">
+    <wsdl:port name="BasicHttpBinding_StoreInterface" binding="tns:BasicHttpBinding_StoreInterface">
+      <soap:address location="http://localhost:8733/Design_Time_Addresses/WcfServiceLibrary1/Service1/" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

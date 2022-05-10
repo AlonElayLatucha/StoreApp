@@ -1,0 +1,10 @@
+C:\Users\alonl\Desktop\Store App\WcfServiceLibrary1\WcfServiceLibrary1\obj\Debug\WcfServiceLibrary1.csproj.AssemblyReference.cache
+C:\Users\alonl\Desktop\Store App\WcfServiceLibrary1\WcfServiceLibrary1\obj\Debug\WcfServiceLibrary1.csproj.CoreCompileInputs.cache
+C:\Users\alonl\Desktop\Store App\WcfServiceLibrary1\WcfServiceLibrary1\bin\Debug\WcfServiceLibrary1.dll.config
+C:\Users\alonl\Desktop\Store App\WcfServiceLibrary1\WcfServiceLibrary1\bin\Debug\WcfServiceLibrary1.dll
+C:\Users\alonl\Desktop\Store App\WcfServiceLibrary1\WcfServiceLibrary1\bin\Debug\WcfServiceLibrary1.pdb
+C:\Users\alonl\Desktop\Store App\WcfServiceLibrary1\WcfServiceLibrary1\obj\Debug\WcfServiceLibrary1.dll
+C:\Users\alonl\Desktop\Store App\WcfServiceLibrary1\WcfServiceLibrary1\obj\Debug\WcfServiceLibrary1.pdb
+C:\Users\alonl\Desktop\Store App\WcfServiceLibrary1\WcfServiceLibrary1\bin\Debug\Pastel.dll
+C:\Users\alonl\Desktop\Store App\WcfServiceLibrary1\WcfServiceLibrary1\bin\Debug\Pastel.xml
+C:\Users\alonl\Desktop\Store App\WcfServiceLibrary1\WcfServiceLibrary1\obj\Debug\WcfServiceLibrary1.csproj.CopyComplete

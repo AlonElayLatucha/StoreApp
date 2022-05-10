@@ -1,0 +1,589 @@
+﻿<Page
+    Loading="Page_Loading"
+    x:Class="StoreUWP.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
+    mc:Ignorable="d"
+    Background="{ThemeResource SystemControlAcrylicWindowBrush}">
+    <Page.Resources>
+        <ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+            <Style x:Key="ButtonRoundedStyle" TargetType="Button">
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="Button">
+                            <Border x:Name="RootBorder" CornerRadius="26" Background="{ThemeResource SystemControlAccentDark2AcrylicElementAccentDark2MediumHighBrush}">
+                                <VisualStateManager.VisualStateGroups>
+                                    <VisualStateGroup x:Name="CommonStates">
+                                        <VisualState x:Name="Normal">
+                                            <Storyboard>
+                                                <PointerUpThemeAnimation Storyboard.TargetName="RootBorder" />
+                                            </Storyboard>
+                                        </VisualState>
+                                        <VisualState x:Name="PointerOver">
+                                            <VisualState.Setters>
+                                                <Setter Target="OverlayBorder.(Border.Background)" Value="{ThemeResource SystemControlHighlightListMediumBrush}" />
+                                            </VisualState.Setters>
+                                            <Storyboard>
+                                                <PointerUpThemeAnimation Storyboard.TargetName="RootBorder" />
+                                            </Storyboard>
+                                        </VisualState>
+                                        <VisualState x:Name="Pressed">
+                                            <VisualState.Setters>
+                                                <Setter Target="OverlayBorder.(Border.Background)" Value="{ThemeResource SystemControlBackgroundBaseMediumBrush}" />
+                                            </VisualState.Setters>
+                                            <Storyboard>
+                                                <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="BorderBrush" Storyboard.TargetName="ContentPresenter">
+                                                    <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ButtonBorderBrushPressed}" />
+                                                </ObjectAnimationUsingKeyFrames>
+                                                <PointerDownThemeAnimation Storyboard.TargetName="RootBorder" />
+                                            </Storyboard>
+                                        </VisualState>
+                                        <VisualState x:Name="Disabled">
+                                            <VisualState.Setters>
+                                                <Setter Target="OverlayBorder.(Border.Background)" Value="{ThemeResource SystemControlDisabledChromeDisabledLowBrush}" />
+                                            </VisualState.Setters>
+                                            <Storyboard>
+                                                <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="BorderBrush" Storyboard.TargetName="ContentPresenter">
+                                                    <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ButtonBorderBrushDisabled}" />
+                                                </ObjectAnimationUsingKeyFrames>
+                                                <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Foreground" Storyboard.TargetName="ContentPresenter">
+                                                    <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ButtonForegroundDisabled}" />
+                                                </ObjectAnimationUsingKeyFrames>
+                                            </Storyboard>
+                                        </VisualState>
+                                    </VisualStateGroup>
+                                </VisualStateManager.VisualStateGroups>
+                                <Border x:Name="OverlayBorder" CornerRadius="5">
+                                    <ContentPresenter x:Name="ContentPresenter" FontFamily="Rubik" AutomationProperties.AccessibilityView="Raw" BorderBrush="Transparent" BorderThickness="{TemplateBinding BorderThickness}" ContentTemplate="{TemplateBinding ContentTemplate}" ContentTransitions="{TemplateBinding ContentTransitions}" Content="{TemplateBinding Content}" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" Padding="{TemplateBinding Padding}" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" Foreground="White" Margin="15,3" />
+                                </Border>
+                            </Border>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+            <Style x:Key="ButtonCircleStyle"
+                TargetType="Button">
+                <Setter Property="Margin" Value="0,10,0,0"></Setter>
+                <Setter Property="Height" Value="50"></Setter>
+                <Setter Property="Width" Value="50"></Setter>
+                <Setter Property="Background"
+            Value="{ThemeResource SystemControlAccentDark2AcrylicElementAccentDark2MediumHighBrush}" />
+                <Setter Property="Foreground"
+            Value="{ThemeResource ButtonForeground}" />
+                <Setter Property="BorderBrush"
+            Value="{ThemeResource ButtonBorderBrush}" />
+                <Setter Property="BorderThickness"
+            Value="{ThemeResource ButtonBorderThemeThickness}" />
+                <Setter Property="Padding"
+            Value="8,4,8,4" />
+                <Setter Property="HorizontalAlignment"
+            Value="Left" />
+                <Setter Property="VerticalAlignment"
+            Value="Center" />
+                <Setter Property="FontFamily"
+            Value="Rubik" />
+                <Setter Property="FontWeight"
+            Value="Normal" />
+                <Setter Property="FontSize"
+            Value="{ThemeResource ControlContentThemeFontSize}" />
+                <Setter Property="UseSystemFocusVisuals"
+            Value="True" />
+                <Setter Property="FocusVisualMargin"
+            Value="-3" />
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="Button">
+                            <Grid x:Name="RootGrid"
+                Background="{TemplateBinding Background}"
+                CornerRadius="100,100,100,100">
+                                <VisualStateManager.VisualStateGroups>
+                                    <VisualStateGroup x:Name="CommonStates">
+                                        <VisualState x:Name="Normal">
+                                            <Storyboard>
+                                                <PointerUpThemeAnimation Storyboard.TargetName="RootGrid" />
+                                            </Storyboard>
+                                        </VisualState>
+                                        <VisualState x:Name="PointerOver">
+                                            <Storyboard>
+                                                <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Background"
+                                                   Storyboard.TargetName="RootGrid">
+                                                    <DiscreteObjectKeyFrame KeyTime="0"
+                                              Value="{ThemeResource ButtonBackgroundPointerOver}" />
+                                                </ObjectAnimationUsingKeyFrames>
+                                                <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="BorderBrush"
+                                                   Storyboard.TargetName="ContentPresenter">
+                                                    <DiscreteObjectKeyFrame KeyTime="0"
+                                              Value="{ThemeResource ButtonBorderBrushPointerOver}" />
+                                                </ObjectAnimationUsingKeyFrames>
+                                                <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Foreground"
+                                                   Storyboard.TargetName="ContentPresenter">
+                                                    <DiscreteObjectKeyFrame KeyTime="0"
+                                              Value="{ThemeResource ButtonForegroundPointerOver}" />
+                                                </ObjectAnimationUsingKeyFrames>
+                                                <PointerUpThemeAnimation Storyboard.TargetName="RootGrid" />
+                                            </Storyboard>
+                                        </VisualState>
+                                        <VisualState x:Name="Pressed">
+                                            <Storyboard>
+                                                <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Background"
+                                                   Storyboard.TargetName="RootGrid">
+                                                    <DiscreteObjectKeyFrame KeyTime="0"
+                                              Value="{ThemeResource ButtonBackgroundPressed}" />
+                                                </ObjectAnimationUsingKeyFrames>
+                                                <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="BorderBrush"
+                                                   Storyboard.TargetName="ContentPresenter">
+                                                    <DiscreteObjectKeyFrame KeyTime="0"
+                                              Value="{ThemeResource ButtonBorderBrushPressed}" />
+                                                </ObjectAnimationUsingKeyFrames>
+                                                <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Foreground"
+                                                   Storyboard.TargetName="ContentPresenter">
+                                                    <DiscreteObjectKeyFrame KeyTime="0"
+                                              Value="{ThemeResource ButtonForegroundPressed}" />
+                                                </ObjectAnimationUsingKeyFrames>
+                                                <PointerDownThemeAnimation Storyboard.TargetName="RootGrid" />
+                                            </Storyboard>
+                                        </VisualState>
+                                        <VisualState x:Name="Disabled">
+                                            <Storyboard>
+                                                <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Background"
+                                                   Storyboard.TargetName="RootGrid">
+                                                    <DiscreteObjectKeyFrame KeyTime="0"
+                                              Value="{ThemeResource ButtonBackgroundDisabled}" />
+                                                </ObjectAnimationUsingKeyFrames>
+                                                <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="BorderBrush"
+                                                   Storyboard.TargetName="ContentPresenter">
+                                                    <DiscreteObjectKeyFrame KeyTime="0"
+                                              Value="{ThemeResource ButtonBorderBrushDisabled}" />
+                                                </ObjectAnimationUsingKeyFrames>
+                                                <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Foreground"
+                                                   Storyboard.TargetName="ContentPresenter">
+                                                    <DiscreteObjectKeyFrame KeyTime="0"
+                                              Value="{ThemeResource ButtonForegroundDisabled}" />
+                                                </ObjectAnimationUsingKeyFrames>
+                                            </Storyboard>
+                                        </VisualState>
+                                    </VisualStateGroup>
+                                </VisualStateManager.VisualStateGroups>
+
+                                <ContentPresenter x:Name="ContentPresenter"
+                              AutomationProperties.AccessibilityView="Raw"
+                              BorderBrush="{TemplateBinding BorderBrush}"
+                              BorderThickness="{TemplateBinding BorderThickness}"
+                              ContentTemplate="{TemplateBinding ContentTemplate}"
+                              ContentTransitions="{TemplateBinding ContentTransitions}"
+                              Content="{TemplateBinding Content}"
+                              HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                              Padding="{TemplateBinding Padding}"
+                              VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                              CornerRadius="100,100,100,100" />
+                            </Grid>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+            <Style x:Key="PivotItemTextBlock_Rubik" TargetType="TextBlock">
+                <Setter Property="Margin" Value="0"></Setter>
+                <Setter Property="FontSize" Value="25"></Setter>
+                <Setter Property="FlowDirection" Value="RightToLeft"></Setter>
+                <Setter Property="FontFamily" Value="Rubik"></Setter>
+            </Style>
+            <Style x:Key="SurveyButton_AccentColor" TargetType="Button">
+                <Setter Property="Background" Value="{ThemeResource SystemChromeAltMediumHighColor}"></Setter>
+                <Setter Property="Foreground" Value="White"></Setter>
+                <Setter Property="FontWeight" Value="Bold"></Setter>
+                <Setter Property="FlowDirection" Value="RightToLeft"></Setter>
+                <Setter Property="FontFamily" Value="Rubik"></Setter>
+                <Setter Property="Content" Value="שליחה"></Setter>
+                <Setter Property="CornerRadius" Value="4"></Setter>
+                <Setter Property="Margin" Value="0,10,0,0"></Setter>
+            </Style>
+            <Style x:Key="BigAssButton" TargetType="Button">
+                <Setter Property="Background" Value="{ThemeResource SystemChromeGrayColor}"></Setter>
+                <Setter Property="Foreground" Value="White"></Setter>
+                <Setter Property="FontWeight" Value="Medium"></Setter>
+                <Setter Property="FlowDirection" Value="RightToLeft"></Setter>
+                <Setter Property="FontFamily" Value="Rubik"></Setter>
+                <Setter Property="FontSize" Value="40"></Setter>
+                <Setter Property="FontSize" Value="35"></Setter>
+                <Setter Property="MaxWidth" Value="450"></Setter>
+                <Setter Property="Width" Value="400"></Setter>
+                <Setter Property="Height" Value="100"></Setter>
+                <Setter Property="Content" Value="שליחה"></Setter>
+                <Setter Property="CornerRadius" Value="4"></Setter>
+                <Setter Property="Margin" Value="15"></Setter>
+            </Style>
+            <Style x:Key="SurveyButton_Extra" TargetType="Button">
+                <Setter Property="Background" Value="{ThemeResource SystemControlAccentDark2AcrylicElementAccentDark2MediumHighBrush}"></Setter>
+                <Setter Property="Width" Value="200"></Setter>
+                <Setter Property="Foreground" Value="White"></Setter>
+                <Setter Property="FontSize" Value="20"></Setter>
+                <Setter Property="FontWeight" Value="Bold"></Setter>
+                <Setter Property="FlowDirection" Value="RightToLeft"></Setter>
+                <Setter Property="FontFamily" Value="Rubik"></Setter>
+                <Setter Property="Content" Value="שליחה"></Setter>
+                <Setter Property="CornerRadius" Value="4"></Setter>
+                <Setter Property="Margin" Value="0,10,0,0"></Setter>
+            </Style>
+            <Style x:Key="SurveyTextBox" TargetType="TextBox">
+                <Setter Property="Width" Value="200"></Setter>
+                <Setter Property="Margin" Value="0,0,30,10"></Setter>
+                <Setter Property="TextWrapping" Value="WrapWholeWords"></Setter>
+                <Setter Property="FlowDirection" Value="RightToLeft"></Setter>
+                <Setter Property="FontFamily" Value="Rubik"></Setter>
+                <Setter Property="CornerRadius" Value="4"></Setter>
+            </Style>
+            <Style x:Key="SurveyNumberBox" TargetType="muxc:NumberBox">
+                <Setter Property="Width" Value="200"></Setter>
+                <Setter Property="FlowDirection" Value="RightToLeft"></Setter>
+                <Setter Property="FontFamily" Value="Rubik"></Setter>
+                <Setter Property="CornerRadius" Value="4"></Setter>
+            </Style>
+            <Style x:Key="SurveyComboBox" TargetType="ComboBox">
+                <Setter Property="Width" Value="200"></Setter>
+                <Setter Property="FlowDirection" Value="RightToLeft"></Setter>
+                <Setter Property="FontFamily" Value="Rubik"></Setter>
+                <Setter Property="PlaceholderText" Value="כאן כותבים"></Setter>
+                <Setter Property="CornerRadius" Value="4"></Setter>
+            </Style>
+            <Style x:Key="SQLItem_TextBlock" TargetType="TextBlock">
+                <Setter Property="HorizontalAlignment" Value="Center"></Setter>
+                <Setter Property="TextAlignment" Value="Center"></Setter>
+                <Setter Property="VerticalAlignment" Value="Center"></Setter>
+                <Setter Property="Margin" Value="20"></Setter>
+                <Setter Property="IsTextSelectionEnabled" Value="True"></Setter>
+                <Setter Property="Foreground" Value="LightYellow"></Setter>
+                <Setter Property="FontSize" Value="25"></Setter>
+                <Setter Property="FlowDirection" Value="RightToLeft"></Setter>
+                <Setter Property="TextWrapping" Value="WrapWholeWords"></Setter>
+                <Setter Property="FontFamily" Value="Rubik"></Setter>
+                <Setter Property="FontWeight" Value="Normal"></Setter>
+                <Setter Property="Width" Value="150"></Setter>
+                <Setter Property="Height" Value="70"></Setter>
+                <Setter Property="Padding" Value="5"></Setter>
+            </Style>
+            <Style x:Key="SQL_PrimaryKey_TextBlock" TargetType="TextBlock">
+                <Setter Property="HorizontalAlignment" Value="Center"></Setter>
+                <Setter Property="TextAlignment" Value="Center"></Setter>
+                <Setter Property="VerticalAlignment" Value="Center"></Setter>
+                <Setter Property="Margin" Value="20"></Setter>
+                <Setter Property="IsTextSelectionEnabled" Value="True"></Setter>
+                <Setter Property="Foreground" Value="{ThemeResource SystemAccentColorLight1}"></Setter>
+                <Setter Property="FontSize" Value="25"></Setter>
+                <Setter Property="FlowDirection" Value="RightToLeft"></Setter>
+                <Setter Property="FontFamily" Value="Rubik"></Setter>
+                <Setter Property="FontWeight" Value="Medium"></Setter>
+                <Setter Property="Width" Value="150"></Setter>
+                <Setter Property="Height" Value="70"></Setter>
+                <Setter Property="Padding" Value="5"></Setter>
+            </Style>
+        </ResourceDictionary>
+    </Page.Resources>
+
+    <ScrollViewer>
+        <Grid Name="SecondaryGrid">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="350"></RowDefinition>
+                <RowDefinition Height="500"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid Name="TitleGrid" Grid.Row="0">
+                <Grid.Background>
+                    <ImageBrush ImageSource="/Assets/Switzerland.jpg" Opacity="0.45" Stretch="UniformToFill"></ImageBrush>
+                </Grid.Background>
+                <VariableSizedWrapGrid Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <TextBlock ToolTipService.ToolTip="עבודת הגשה, ראש השנה 2021 🏫" FlowDirection="RightToLeft" FontFamily="Rubik" FontSize="100" FontWeight="Medium">UWP×WCF מיזם ניהול חנות</TextBlock>
+                    <TextBlock ToolTipService.ToolTip="📧 alonlatucha1@gmail.com 📞 052-273-9002" HorizontalAlignment="Center" VerticalAlignment="Center" FlowDirection="RightToLeft" FontFamily="Rubik" FontSize="60" FontWeight="Light">אלון אילי לטוכה [י"ב4]</TextBlock>
+                </VariableSizedWrapGrid>
+            </Grid>
+            <Grid Name="ContentGrid" Grid.Row="1">
+                <Grid HorizontalAlignment="Center" VerticalAlignment="Top" Width="Auto" Height="Auto" Margin="10">
+                    <Pivot FlowDirection="RightToLeft">
+                        <PivotItem x:Name="Clients_PivotItem">
+                            <PivotItem.Header>
+                                <VariableSizedWrapGrid>
+                                    <TextBlock Style="{StaticResource PivotItemTextBlock_Rubik}">
+                                    לקוחות
+                                    </TextBlock>
+                                    <Viewbox Height="20" Width="20">
+                                        <SymbolIcon Symbol="Contact"></SymbolIcon>
+                                    </Viewbox>
+                                </VariableSizedWrapGrid>
+                            </PivotItem.Header>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="300"></ColumnDefinition>
+                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <ScrollViewer Padding="16" Height="Auto" Grid.Column="0">
+                                    <StackPanel Orientation="Vertical" HorizontalAlignment="Left">
+                                        <TextBox Style="{StaticResource SurveyTextBox}" BeforeTextChanging="customerID_TextBox_BeforeTextChanging" x:Name="customerID_TextBox" PlaceholderText="תעודת זהות" Width="200" />
+                                        <TextBox Style="{StaticResource SurveyTextBox}" BeforeTextChanging="customerLastName_TextBox_BeforeTextChanging" x:Name="customerLastName_TextBox" PlaceholderText="שם משפחה" Width="200" ToolTipService.ToolTip="אנגלית בבקשה!" />
+                                        <TextBox Style="{StaticResource SurveyTextBox}" BeforeTextChanging="customerFirstName_TextBox_BeforeTextChanging" x:Name="customerFirstName_TextBox" PlaceholderText="שם פרטי" Width="200" ToolTipService.ToolTip="אנגלית!" />
+                                        <Button Name="customerSurvey_SendButton" Click="customerSurvey_SendButton_Click" Style="{StaticResource ButtonCircleStyle}">
+                                            <SymbolIcon Symbol="Send" Foreground="White"></SymbolIcon>
+                                        </Button>
+                                        <Button x:Name="Refresh_Customers" Style="{StaticResource SurveyButton_Extra}" Click="Refresh_Customers_Click">
+                                            <VariableSizedWrapGrid Orientation="Horizontal">
+                                                <TextBlock>רענון רשימת לקוחות</TextBlock>
+                                                <Viewbox Height="20" Width="20">
+                                                    <SymbolIcon Symbol="Refresh"></SymbolIcon>
+                                                </Viewbox>
+                                            </VariableSizedWrapGrid>
+                                        </Button>
+                                    </StackPanel>
+                                </ScrollViewer>
+                                <Grid x:Name="ClientsListGrid" Grid.Column="1" CornerRadius="5">
+                                    <ListView x:Name="clientsList">
+                                        <ListView.ItemTemplate>
+                                            <DataTemplate>
+                                                <Border>
+                                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                                        <TextBlock ToolTipService.ToolTip="מזהה לקוח 📇" Style="{StaticResource SQL_PrimaryKey_TextBlock}" Text="{Binding customerID}"></TextBlock>
+                                                        <TextBlock ToolTipService.ToolTip="שם משפחה (לקוח) 👪" Style="{StaticResource SQLItem_TextBlock}" Text="{Binding lastName}"></TextBlock>
+                                                        <TextBlock ToolTipService.ToolTip="שם פרטי (לקוח) 🧍" Style="{StaticResource SQLItem_TextBlock}" Text="{Binding firstName}"></TextBlock>
+                                                    </StackPanel>
+                                                </Border>
+                                            </DataTemplate>
+                                        </ListView.ItemTemplate>
+                                    </ListView>
+                                </Grid>
+                            </Grid>
+                        </PivotItem>
+                        <PivotItem x:Name="Items_PivotItem" Loading="Items_PivotItem_Loading">
+                            <PivotItem.Header>
+                                <VariableSizedWrapGrid>
+                                    <TextBlock Style="{StaticResource PivotItemTextBlock_Rubik}">
+                                    פריטים
+                                    </TextBlock>
+                                    <Viewbox Height="20" Width="20">
+                                        <SymbolIcon Symbol="XboxOneConsole"></SymbolIcon>
+                                    </Viewbox>
+                                </VariableSizedWrapGrid>
+                            </PivotItem.Header>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="300"></ColumnDefinition>
+                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                 <ScrollViewer Padding="16" Height="Auto" Grid.Column="0">
+                                        <StackPanel Orientation="Vertical" HorizontalAlignment="Left">
+                                            <TextBox Style="{StaticResource SurveyTextBox}" BeforeTextChanging="itemID_TextBox_BeforeTextChanging" x:Name="itemID_TextBox" PlaceholderText="מזהה סידורי" Width="200" />
+                                            <TextBox Style="{StaticResource SurveyTextBox}" BeforeTextChanging="itemName_TextBox_BeforeTextChanging" x:Name="itemName_TextBox" PlaceholderText="שם הפריט" Width="200" ToolTipService.ToolTip="אנגלית בבקשה!" />
+                                            <TextBox Style="{StaticResource SurveyTextBox}" BeforeTextChanging="itemPrice_TextBox_BeforeTextChanging" x:Name="itemPrice_TextBox" PlaceholderText="מחיר" Width="200" ToolTipService.ToolTip="בתשלומים!" />
+                                            <Button Name="itemsSurvey_SendButton" Click="itemsSurvey_SendButton_Click"  Style="{StaticResource ButtonCircleStyle}">
+                                                <SymbolIcon Symbol="Send" Foreground="White"></SymbolIcon>
+                                            </Button>
+                                        <Button x:Name="Refresh_Items" Style="{StaticResource SurveyButton_Extra}" Click="Refresh_Items_Click">
+                                            <VariableSizedWrapGrid Orientation="Horizontal">
+                                                <TextBlock>רענון רשימת פריטים</TextBlock>
+                                                <Viewbox Height="20" Width="20">
+                                                    <SymbolIcon Symbol="Refresh"></SymbolIcon>
+                                                </Viewbox>
+                                            </VariableSizedWrapGrid>
+                                        </Button>
+                                    </StackPanel>
+                                    </ScrollViewer>
+                                <Grid x:Name="ItemsListGrid" Grid.Column="1" CornerRadius="5">
+                                    <ListView x:Name="itemsList">
+                                        <ListView.ItemTemplate>
+                                            <DataTemplate>
+                                                <Border>
+                                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                                        <TextBlock ToolTipService.ToolTip="מזהה פריט 📇" Style="{StaticResource SQL_PrimaryKey_TextBlock}" Text="{Binding itemID}"></TextBlock>
+                                                        <TextBlock ToolTipService.ToolTip="שם פריט 📇" Style="{StaticResource SQLItem_TextBlock}" Text="{Binding itemName}"></TextBlock>
+                                                        <TextBlock ToolTipService.ToolTip="מחיר פריט 💰" Style="{StaticResource SQLItem_TextBlock}" Text="{Binding price}"></TextBlock>
+                                                    </StackPanel>
+                                                </Border>
+                                            </DataTemplate>
+                                        </ListView.ItemTemplate>
+                                    </ListView>
+                                </Grid>
+                            </Grid>
+                        </PivotItem>
+                        <PivotItem x:Name="Sales_PivotItem" Loading="Sales_PivotItem_Loading">
+                            <PivotItem.Header>
+                                <VariableSizedWrapGrid>
+                                    <TextBlock Style="{StaticResource PivotItemTextBlock_Rubik}">
+                                    מכירות
+                                    </TextBlock>
+                                    <Viewbox Height="20" Width="20">
+                                        <SymbolIcon Symbol="Shop"></SymbolIcon>
+                                    </Viewbox>
+                                </VariableSizedWrapGrid>
+                            </PivotItem.Header>
+                            <Grid>
+                                <Pivot FlowDirection="RightToLeft">
+                                    <PivotItem x:Name="SalesSubPivot">
+                                        <PivotItem.Header>
+                                            <VariableSizedWrapGrid>
+                                                <TextBlock Style="{StaticResource PivotItemTextBlock_Rubik}">כללי</TextBlock>
+                                                <Viewbox Height="20" Width="20">
+                                                    <SymbolIcon Symbol="Admin"></SymbolIcon>
+                                                </Viewbox>
+                                            </VariableSizedWrapGrid>
+                                        </PivotItem.Header>
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="300"></ColumnDefinition>
+                                                <ColumnDefinition Width="*"></ColumnDefinition>
+                                            </Grid.ColumnDefinitions>
+                                            <ScrollViewer Padding="16" Height="Auto" Grid.Column="0">
+                                                <StackPanel Orientation="Vertical" HorizontalAlignment="Left">
+                                                    <muxc:NumberBox Header="מזהה פריט" SpinButtonPlacementMode="Inline" Style="{StaticResource SurveyNumberBox}" x:Name="saleID_NumberBox" PlaceholderText="מזהה המכירה"  Value="1"  Minimum="1" SmallChange="1" LargeChange="2" Width="200"></muxc:NumberBox>
+                                                    <ComboBox Header="מזהה סידורי (פריט)" Style="{StaticResource SurveyComboBox}" x:Name="saleItemID_ComboBox" ItemsSource="{Binding itemID}" PlaceholderText="מזהה סידוי של הפריט" Width="200" ToolTipService.ToolTip="אנגלית בבקשה!" />
+                                                    <ComboBox Header="תעודת זהות (לקוח)" Style="{StaticResource SurveyComboBox}" x:Name="saleCustomerID_ComboBox" ItemsSource="{Binding customerID}" PlaceholderText="תעודת זהות של הלקוח" Width="200" ToolTipService.ToolTip="בתשלומים!" />
+                                                    <muxc:NumberBox Header="כמות" SpinButtonPlacementMode="Inline" Style="{StaticResource SurveyNumberBox}" x:Name="saleItemQuantity_NumberBox" Value="1"  Minimum="1" SmallChange="1" LargeChange="2" PlaceholderText="כמות" ToolTipService.ToolTip="אלף ארגז!" />
+                                                    <DatePicker DateChanged="sale_DataPicker_DateChanged" x:Name="sale_DatePicker" Width="200" Margin="0,16,0,0" Background="{ThemeResource SystemControlChromeMediumAcrylicElementMediumBrush}" FontFamily="Rubik" Language="he-IL" HorizontalAlignment="Right"></DatePicker>
+                                                    <Button Name="salesSurvey_SendButton" Click="salesSurvey_SendButton_Click" Style="{StaticResource ButtonCircleStyle}">
+                                                        <SymbolIcon Symbol="Send" Foreground="White"></SymbolIcon>
+                                                    </Button>
+                                                    <Button x:Name="Refresh_Sales" Style="{StaticResource SurveyButton_Extra}" Click="Refresh_Sales_Click">
+                                                        <VariableSizedWrapGrid Orientation="Horizontal">
+                                                            <TextBlock>רענון רשימת מכירות</TextBlock>
+                                                            <Viewbox Height="20" Width="20">
+                                                                <SymbolIcon Symbol="Refresh"></SymbolIcon>
+                                                            </Viewbox>
+                                                        </VariableSizedWrapGrid>
+                                                    </Button>
+                                                </StackPanel>
+                                            </ScrollViewer>
+                                            <Grid x:Name="SalesListGrid" Grid.Column="1" CornerRadius="5">
+                                                <ScrollViewer HorizontalScrollMode="Enabled" HorizontalScrollBarVisibility="Visible" IsHorizontalRailEnabled="True">
+                                                    <ListView CanBeScrollAnchor="True" x:Name="salesList">
+                                                        <ListView.ItemTemplate>
+                                                            <DataTemplate>
+                                                                <Border>
+                                                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                                                        <TextBlock ToolTipService.ToolTip="מזהה מכירה 📇" Style="{StaticResource SQL_PrimaryKey_TextBlock}" Text="{Binding id}"></TextBlock>
+                                                                        <TextBlock ToolTipService.ToolTip="שם פרטי (לקוח) 🧍" Style="{StaticResource SQLItem_TextBlock}" Text="{Binding customerFirstName}"></TextBlock>
+                                                                        <TextBlock ToolTipService.ToolTip="שם משפחה (לקוח) 👪" Style="{StaticResource SQLItem_TextBlock}" Text="{Binding customerLastName}"></TextBlock>
+                                                                        <TextBlock ToolTipService.ToolTip="שם פריט 📇" Style="{StaticResource SQLItem_TextBlock}" Text="{Binding itemName}"></TextBlock>
+                                                                        <TextBlock ToolTipService.ToolTip="תאריך מכירה 📅" Style="{StaticResource SQLItem_TextBlock}" FontSize="15" VerticalAlignment="Center" Text="{Binding saleDate}"></TextBlock>
+                                                                        <TextBlock ToolTipService.ToolTip="מזהה פריט 📇" Style="{StaticResource SQLItem_TextBlock}" Text="{Binding itemID}"></TextBlock>
+                                                                        <TextBlock ToolTipService.ToolTip="תעודת זהות (לקוח) 📇" Style="{StaticResource SQLItem_TextBlock}" Text="{Binding customerID}"></TextBlock>
+                                                                        <TextBlock ToolTipService.ToolTip="כמות פריט 🔢" Style="{StaticResource SQLItem_TextBlock}" Text="{Binding quantity}"></TextBlock>
+                                                                    </StackPanel>
+                                                                </Border>
+                                                            </DataTemplate>
+                                                        </ListView.ItemTemplate>
+                                                    </ListView>
+                                                </ScrollViewer>
+                                            </Grid>
+                                        </Grid>
+                                    </PivotItem>
+                                    <PivotItem x:Name="SalesByID">
+                                        <PivotItem.Header>
+                                            <VariableSizedWrapGrid>
+                                                <TextBlock Style="{StaticResource PivotItemTextBlock_Rubik}">לפי קוד</TextBlock>
+                                                <Viewbox Height="20" Width="20">
+                                                    <SymbolIcon Symbol="Permissions"></SymbolIcon>
+                                                </Viewbox>
+                                            </VariableSizedWrapGrid>
+                                        </PivotItem.Header>
+                                        <Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="70"></RowDefinition>
+                                                <RowDefinition Height="*"></RowDefinition>
+                                            </Grid.RowDefinitions>
+                                            <ScrollViewer Grid.Row="0">
+                                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                                                    <muxc:NumberBox Margin="0,0,25,0" x:Name="byCode_CodeNumberBox" Header="מזהה פריט" SpinButtonPlacementMode="Inline" Style="{StaticResource SurveyNumberBox}" PlaceholderText="מזהה המכירה" Value="1" Minimum="1" SmallChange="1" LargeChange="2" Width="200"></muxc:NumberBox>
+                                                    <Button Name="salesById_Survey_SendButton" Click="salesById_Survey_SendButton_Click"  Style="{StaticResource ButtonCircleStyle}">
+                                                        <SymbolIcon Symbol="Send" Foreground="White"></SymbolIcon>
+                                                    </Button>
+                                                </StackPanel>
+                                            </ScrollViewer>
+                                            <Grid x:Name="ByCode_SalesSQLGrid" Grid.Row="1" CornerRadius="5">
+                                                <ListView x:Name="byCode_SalesList">
+                                                    <ListView.ItemTemplate>
+                                                        <DataTemplate>
+                                                            <Border>
+                                                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                                                    <TextBlock Style="{StaticResource SQL_PrimaryKey_TextBlock}" Text="{Binding id}"></TextBlock>
+                                                                    <TextBlock Style="{StaticResource SQLItem_TextBlock}" Text="{Binding itemID}"></TextBlock>
+                                                                    <TextBlock Style="{StaticResource SQLItem_TextBlock}" Text="{Binding customerID}"></TextBlock>
+                                                                    <TextBlock Style="{StaticResource SQLItem_TextBlock}" Text="{Binding quantity}"></TextBlock>
+                                                                    <TextBlock Style="{StaticResource SQLItem_TextBlock}" FontSize="15" Text="{Binding saleDate}"></TextBlock>
+                                                                </StackPanel>
+                                                            </Border>
+                                                        </DataTemplate>
+                                                    </ListView.ItemTemplate>
+                                                </ListView>
+                                            </Grid>
+                                        </Grid>
+                                    </PivotItem>
+                                </Pivot>
+                            </Grid>
+                        </PivotItem>
+                        <PivotItem>
+                            <PivotItem.Header>
+                                <VariableSizedWrapGrid>
+                                    <TextBlock Foreground="OrangeRed" FontWeight="Medium" Style="{StaticResource PivotItemTextBlock_Rubik}">
+                                    בונוס!
+                                    </TextBlock>
+                                    <Viewbox Height="20" Width="20">
+                                        <SymbolIcon Foreground="OrangeRed" Symbol="Favorite"></SymbolIcon>
+                                    </Viewbox>
+                                </VariableSizedWrapGrid>
+                            </PivotItem.Header>
+                            <Grid Height="Auto" VerticalAlignment="Center">
+                                <ScrollViewer Height="Auto" VerticalAlignment="Center" HorizontalAlignment="Center">
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="*"></RowDefinition>
+                                            <RowDefinition Height="*"></RowDefinition>
+                                        </Grid.RowDefinitions>
+                                        <VariableSizedWrapGrid Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                            <TextBox x:Name="MostPopular_Customer_Name_TextBox" Style="{StaticResource SurveyTextBox}" IsReadOnly="True" Text="שם הלקוח" Header="הלקוח הכי פופולארי"></TextBox>
+                                            <TextBox x:Name="MostPopular_Item_TextBox" Style="{StaticResource SurveyTextBox}" IsReadOnly="True" Text="המוצר הכי נמכר" Header="המוצר הכי נמכר"></TextBox>
+                                        </VariableSizedWrapGrid>
+                                        <VariableSizedWrapGrid Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                            <Button x:Name="RickRollButton" Click="RickRollButton_Click" Background="OrangeRed" Style="{StaticResource ButtonCircleStyle}">
+                                                <SymbolIcon Symbol="MusicInfo" Foreground="White"></SymbolIcon>
+                                            </Button>
+                                        </VariableSizedWrapGrid>
+                                    </Grid>
+                                    
+                                </ScrollViewer>
+                            </Grid>
+                            
+                        </PivotItem>
+                    </Pivot>
+                </Grid>
+            </Grid>
+            <Grid Name="ButtonsGrid" Grid.Row="2">
+                <VariableSizedWrapGrid HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal" MaximumRowsOrColumns="10">
+                    <Button Name="DeleteDatabase_FlyoutButton" Style="{StaticResource BigAssButton}">
+                        <VariableSizedWrapGrid Orientation="Horizontal">
+                            <TextBlock>איפוס מסד הנתונים</TextBlock>
+                            <Viewbox Height="35" Width="35">
+                                <SymbolIcon Symbol="Delete"></SymbolIcon>
+                            </Viewbox>
+                        </VariableSizedWrapGrid>
+                        <Button.Flyout>
+                            <Flyout>
+                                <StackPanel>
+                                    <TextBlock Style="{ThemeResource BaseTextBlockStyle}" Text="אני עומד לפוצץ את מסד הנתונים, לבצע?" Margin="0,0,0,12" />
+                                    <Button Click="DeleteConfirmation_Click" Content="✔️" ToolTipService.ToolTip="🤯" />
+                                </StackPanel>
+                            </Flyout>
+                        </Button.Flyout>
+                    </Button>
+                    <Button Name="SyncAllTablesButton" Style="{StaticResource BigAssButton}" Click="SyncAllTablesButton_Click">
+                        <VariableSizedWrapGrid Orientation="Horizontal">
+                            <TextBlock>סנכרון כל הטבלאות</TextBlock>
+                            <Viewbox Height="35" Width="35">
+                                <SymbolIcon Symbol="Refresh"></SymbolIcon>
+                            </Viewbox>
+                        </VariableSizedWrapGrid>
+                    </Button>
+
+                </VariableSizedWrapGrid>
+            </Grid>
+        </Grid>
+    </ScrollViewer>
+</Page>
